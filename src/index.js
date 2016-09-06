@@ -1,2 +1,5 @@
+export Borders from './Borders'
 export Colors from './Colors'
+export Corners from './Corners'
+export Fonts from './Fonts'
 export Spacing from './Spacing'
