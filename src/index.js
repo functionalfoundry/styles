@@ -1,10 +1,10 @@
 /* @flow */
-module.exports.Borders = require('./Borders')
-module.exports.Colors = require('./Colors')
-module.exports.Corners = require('./Corners')
-module.exports.Fonts = require('./Fonts')
-module.exports.Shadows = require('./Shadows')
-module.exports.Spacing = require('./Spacing')
+module.exports.Borders = require('./Borders').default
+module.exports.Colors = require('./Colors').default
+module.exports.Corners = require('./Corners').default
+module.exports.Fonts = require('./Fonts').default
+module.exports.Shadows = require('./Shadows').default
+module.exports.Spacing = require('./Spacing').default
 
 // export Borders from './Borders'
 // export Colors from './Colors'
