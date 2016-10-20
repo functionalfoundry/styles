@@ -1,3 +1,4 @@
+/* @flow */
 const Spacing = {
   pico: 2,
   micro: 4,

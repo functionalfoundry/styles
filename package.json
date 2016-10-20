@@ -5,8 +5,9 @@
   "main": "lib/index.js",
   "scripts": {
     "start": "node development.js",
-    "build-lib": "babel src --out-dir lib",
-    "prepublish": "npm run build-lib",
+    "clean": "rm -rf lib",
+    "compile": "babel src --out-dir lib --source-maps --ignore test.js,story.js && flow-copy-source -v src lib --ignore \"**/*.+(story|test).js\"",
+    "prepublish": "npm run clean && npm run compile",
     "storybook": "start-storybook -p 4000"
   },
   "files": [
@@ -37,6 +38,8 @@
     "eslint-plugin-import": "^1.14.0",
     "eslint-plugin-jsx-a11y": "^2.2.0",
     "eslint-plugin-react": "^6.1.2",
+    "flow-bin": "^0.33.0",
+    "flow-copy-source": "^1.1.0",
     "react": "15.3.1",
     "react-dom": "15.3.1",
     "semantic-release": "^4.3.5",

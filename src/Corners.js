@@ -1,3 +1,4 @@
+/* @flow */
 const Corners = {
   square: {
     borderRadius: 0,

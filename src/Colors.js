@@ -1,3 +1,4 @@
+/* @flow */
 const defaultGrey = '#0f1619'
 const defaultPrimary = '#0be5e5'
 const defaultGreen = '#0BD466'

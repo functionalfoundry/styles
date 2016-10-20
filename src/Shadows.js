@@ -1,3 +1,4 @@
+/* @flow */
 const lengths = {
   micro: '1px',
   tiny: '2px',

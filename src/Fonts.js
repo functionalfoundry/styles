@@ -1,5 +1,4 @@
-import Colors from './Colors'
-
+/* @flow */
 const heading = {
   fontFamily: '"Khula"',
   fontSize: '1.25em',
