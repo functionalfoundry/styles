@@ -16,6 +16,7 @@ const Greys = {
   grey600: '#656b6e',
   grey700: '#494f52',
   grey800: '#2c3236',
+  grey850: '#1d2226',
   grey900: defaultGrey,
 }
 
