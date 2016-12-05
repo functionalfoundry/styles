@@ -9,8 +9,8 @@ const lengths = {
 }
 
 const colors = {
-  light: 'rgba(0,0,0,0.25)',
-  dark: 'rgba(0,0,0,0.22)',
+  light: 'rgba(0,0,0,0.02)',
+  dark: 'rgba(0,0,0,0.04)',
 }
 
 const getDimension = (length, color) => `0 ${length} ${length} ${color}`
