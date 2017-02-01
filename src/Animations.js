@@ -42,8 +42,64 @@ const Timing = {
   }
 }
 
+const EnterFromLeft = {
+    '0%': {
+        transform: 'translate3d(-100px, 0, 0) scale(0.95)',
+        transformOrigin: '50% 50%',
+        opacity: 0
+    },
+
+    '100%': {
+        transform: 'translate3d(0, 0, 0) scale(1)',
+        transformOrigin: '50% 50%',
+        opacity: 0
+    },
+};
+
+const EnterFromRight = {
+    '0%': {
+        transform: 'translate3d(100px, 0, 0) scale(0.95)',
+        transformOrigin: '50% 50%',
+        opacity: 0
+    },
+
+    '100%': {
+        transform: 'translate3d(0, 0, 0) scale(1)',
+        transformOrigin: '50% 50%',
+        opacity: 0
+    },
+};
+
+const AppearIn = {
+    'from': {
+        opacity: 0,
+    },
+
+    'to': {
+        opacity: 1,
+    }
+};
+
+const AppearOut = {
+    'from': {
+        opacity: 0,
+    },
+
+    'to': {
+        opacity: 1,
+    }
+};
+
+const Keyframes = {
+  ...EnterFromLeft,
+  ...EnterFromRight,
+  ...AppearIn,
+  ...AppearOut,
+}
+
 const Animations = {
   ...Eases,
+  ...Keyframes,
   ...Timing
 }
 
