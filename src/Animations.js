@@ -99,7 +99,7 @@ const Keyframes = {
 
 const Animations = {
   ...Eases,
-  ...Keyframes,
+  ...Keyframes, //must be reworked so that the docs don't output keyframes
   ...Timing
 }
 
