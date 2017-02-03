@@ -1,19 +1,13 @@
 /* @flow */
 import React from 'react'
 import { storiesOf } from '@kadira/storybook'
+import Theme from 'js-theme'
 import Animations from './Animations'
 import Fonts from './Fonts'
 
 type AnimationPropsT = {
   animationStyle: Object,
   label: string,
-}
-
-const AnimationDemo = {
-  height: 64,
-  width: 64,
-  margin: '25px 25px 0 0',
-  backgroundColor: 'grey'
 }
 
 class Animation extends React.Component {
@@ -29,22 +23,23 @@ class Animation extends React.Component {
   }
 
   render() {
+    const {
+      label,
+      theme,
+    } = this.props
     return (
-      <div 
-        style={{
-          display: 'flex',
-          flexDirection: 'column',
-          width: 66
-        }}>
-          <div
-            style={AnimationDemo}/>
-          <button 
-            style={{
-              marginTop: 10
-            }}
-            onClick={this.handleClick}>
-              {this.props.label}
-          </button>
+      <div
+        {...theme.animation}
+      >
+        <div
+          {...theme.animationDemo}
+        />
+        <button
+          {...theme.button}
+          onClick={this.handleClick}
+        >
+          {label}
+        </button>
       </div>
     );
   }
@@ -76,11 +71,32 @@ class Animation extends React.Component {
 
 storiesOf('Animations', module)
   .add('Standard', () => (
-    <div style={{
+    <div
+      style={{
         display: 'flex'
-      }}>
-      <Animation
+      }}
+    >
+      <ThemedAnimation
         label='enter'
       />
     </div>
   ))
+
+const defaultTheme = {
+  animation: {
+    display: 'flex',
+    flexDirection: 'column',
+    width: 66,
+  },
+  animationDemo: {
+    height: 64,
+    width: 64,
+    margin: '25px 25px 0 0',
+    backgroundColor: 'grey',
+  },
+  button: {
+    marginTop: 10,
+  },
+}
+
+const ThemedAnimation = Theme('Animation', defaultTheme)(Animation)
