@@ -42,65 +42,182 @@ const Timing = {
   }
 }
 
-const EnterFromLeft = {
-    '0%': {
-        transform: 'translate3d(-100px, 0, 0) scale(0.95)',
-        transformOrigin: '50% 50%',
-        opacity: 0
-    },
+const DefaultFillMode = {
+  animationFillMode: 'both'
+};
 
-    '100%': {
-        transform: 'translate3d(0, 0, 0) scale(1)',
-        transformOrigin: '50% 50%',
-        opacity: 0
-    },
+const EnterFromLeft = {
+  '0%': {
+    WebkitTransform: 'translate3d(-100px, 0, 0) scale(0.95)',
+    transform: 'translate3d(-100px, 0, 0) scale(0.95)',
+    transformOrigin: '50% 50%',
+    opacity: 0
+  },
+
+  '100%': {
+    WebkitTransform: 'translate3d(0, 0, 0) scale(1)',
+    transform: 'translate3d(0, 0, 0) scale(1)',
+    transformOrigin: '50% 50%',
+    opacity: 1
+  },
 };
 
 const EnterFromRight = {
-    '0%': {
-        transform: 'translate3d(100px, 0, 0) scale(0.95)',
-        transformOrigin: '50% 50%',
-        opacity: 0
-    },
+  '0%': {
+    WebkitTransform: 'translate3d(100px, 0, 0) scale(0.95)',
+    transform: 'translate3d(100px, 0, 0) scale(0.95)',
+    transformOrigin: '50% 50%',
+    opacity: 0
+  },
 
-    '100%': {
-        transform: 'translate3d(0, 0, 0) scale(1)',
-        transformOrigin: '50% 50%',
-        opacity: 0
-    },
+  '100%': {
+    WebkitTransform: 'translate3d(0, 0, 0) scale(1)',
+    transform: 'translate3d(0, 0, 0) scale(1)',
+    transformOrigin: '50% 50%',
+    opacity: 1
+  },
 };
 
-const AppearIn = {
-    'from': {
-        opacity: 0,
-    },
+const ExitFromLeft = {
+  '0%': {
+    transform: 'translate3d(0, 0, 0) scale(1)',
+    transform: 'translate3d(0, 0, 0) scale(1)',
+    transformOrigin: '50% 50%',
+    opacity: 1
+  },
 
-    'to': {
-        opacity: 1,
-    }
+  '100%': {
+    transform: 'translate3d(-100px, 0, 0) scale(0.95)',
+    transform: 'translate3d(-100px, 0, 0) scale(0.95)',
+    transformOrigin: '50% 50%',
+    opacity: 0
+  },
+};
+
+const ExitFromRight = {
+  '0%': {
+    transform: 'translate3d(0, 0, 0) scale(1)',
+    transform: 'translate3d(0, 0, 0) scale(1)',
+    transformOrigin: '50% 50%',
+    opacity: 1
+  },
+
+  '100%': {
+    transform: 'translate3d(100px, 0, 0) scale(0.95)',
+    transformOrigin: '50% 50%',
+    opacity: 0
+  },
+};
+
+const EnterClockwise = {
+  '0%': {
+    transform: 'translateZ(0) scale(0.95) rotate(-90deg)',
+    transformOrigin: '50% 50%',
+    opacity: 0
+  },
+
+  '100%': {
+    transform: 'translateZ(0) scale(0.95) rotate(0deg)',
+    transformOrigin: '50% 50%',
+    opacity: 1
+  },
+};
+
+const EnterCounterClockwise = {
+  '0%': {
+    transform: 'translateZ(0) scale(0.95) rotate(90deg)',
+    transformOrigin: '50% 50%',
+    opacity: 0
+  },
+
+  '100%': {
+    transform: 'translateZ(0) scale(0.95) rotate(0deg)',
+    transformOrigin: '50% 50%',
+    opacity: 1
+  },
+};
+
+const ExitClockwise = {
+  '0%': {
+    transform: 'translateZ(0) scale(0.95) rotate(-90deg)',
+    transformOrigin: '50% 50%',
+    opacity: 1
+  },
+
+  '100%': {
+    transform: 'translateZ(0) scale(0.95) rotate(0deg)',
+    transformOrigin: '50% 50%',
+    opacity: 0
+  },
+};
+
+const ExitCounterClockwise = {
+  '0%': {
+    transform: 'translateZ(0) scale(0.95) rotate(0deg)',
+    transformOrigin: '50% 50%',
+    opacity: 1
+  },
+
+  '100%': {
+    transform: 'translateZ(0) scale(0.95) rotate(90deg)',
+    transformOrigin: '50% 50%',
+    opacity: 0
+  },
+};
+
+const Shake = {
+  '10%, 90%': {
+    transform: 'translate3d(-1px, 0, 0)',
+  },
+
+  '20%, 80%': {
+    transform: 'translate3d(2px, 0, 0)',
+  },
+
+  '30%, 50%, 70%': {
+    transform: 'translate3d(-4px, 0, 0)',
+  },
+
+  '40%, 60%': {
+    transform: 'translate3d(4px, 0, 0)',
+  },
+}
+
+const AppearIn = {
+  'from': {
+    opacity: 0,
+  },
+
+  'to': {
+    opacity: 1,
+  }
 };
 
 const AppearOut = {
-    'from': {
-        opacity: 0,
-    },
+  'from': {
+    opacity: 0,
+  },
 
-    'to': {
-        opacity: 1,
-    }
+  'to': {
+    opacity: 1,
+  }
 };
 
-const Keyframes = {
+const Animations = {
   ...EnterFromLeft,
   ...EnterFromRight,
+  ...ExitFromLeft,
+  ...ExitFromRight,
+  ...EnterClockwise,
+  ...EnterCounterClockwise,
+  ...ExitClockwise,
+  ...ExitCounterClockwise,
+  ...Shake,
   ...AppearIn,
   ...AppearOut,
-}
-
-const Animations = {
   ...Eases,
-  ...Keyframes, //must be reworked so that the docs don't output keyframes
-  ...Timing
+  ...Timing,
+  ...DefaultFillMode
 }
 
 export default Animations
