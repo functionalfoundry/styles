@@ -9,40 +9,78 @@ type AnimationPropsT = {
   label: string,
 }
 
-const Animation = ({
-  animationStyle,
-  label,
-}: BorderPropsT) => (
-  <div>
-    <div
-      style={{
-        ...animationStyle,
-        height: 64,
-        width: 64,
-        marginBottom: 8,
-        marginTop: 24,
-        backgroundColor: 'grey'
-      }}
-    />
-    <div
-      style={{
-        ...Fonts.base,
-      }}
-    >
-      {label}
-    </div>
-  </div>
-)
+const AnimationDemo = {
+  height: 64,
+  width: 64,
+  margin: '25px 25px 0 0',
+  backgroundColor: 'grey'
+}
+
+class Animation extends React.Component {
+  constructor() {
+    super();
+    this.state = {
+      hasEntered: false
+    }
+  }
+
+  handleClick() {
+    this.setState({hasEntered: !this.state.hasEntered});
+  }
+
+  render() {
+    return (
+      <div 
+        style={{
+          display: 'flex',
+          flexDirection: 'column',
+          width: 66
+        }}>
+          <div
+            style={AnimationDemo}/>
+          <button 
+            style={{
+              marginTop: 10
+            }}
+            onClick={this.handleClick}>
+              {this.props.label}
+          </button>
+      </div>
+    );
+  }
+}
+
+// const Animation = ({
+//   animationStyle,
+//   label,
+// }: AnimationPropsT) => (
+//   <div>
+//     <div
+//       style={{
+//         ...animationStyle,
+//         height: 64,
+//         width: 64,
+//         margin: '25px 25px 0 0',
+//         backgroundColor: 'grey'
+//       }}
+//     />
+//     <div
+//       style={{
+//         ...Fonts.base,
+//       }}
+//     >
+//       {label}
+//     </div>
+//   </div>
+// )
 
 storiesOf('Animations', module)
   .add('Standard', () => (
-    <div>
-      {Object.keys(Animations).map((animation) => (
-        <Animation
-          key={animation}
-          animationStyle={Animations[animation]}
-          label={animation}
-        />
-      ))}
+    <div style={{
+        display: 'flex'
+      }}>
+      <Animation
+        label='enter'
+      />
     </div>
   ))
