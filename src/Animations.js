@@ -48,14 +48,12 @@ const DefaultFillMode = {
 
 const EnterFromLeft = {
   '0%': {
-    WebkitTransform: 'translate3d(-100px, 0, 0) scale(0.95)',
     transform: 'translate3d(-100px, 0, 0) scale(0.95)',
     transformOrigin: '50% 50%',
     opacity: 0
   },
 
   '100%': {
-    WebkitTransform: 'translate3d(0, 0, 0) scale(1)',
     transform: 'translate3d(0, 0, 0) scale(1)',
     transformOrigin: '50% 50%',
     opacity: 1
@@ -139,7 +137,7 @@ const EnterCounterClockwise = {
 
 const ExitClockwise = {
   '0%': {
-    transform: 'translateZ(0) scale(0.95) rotate(-90deg)',
+    transform: 'translateZ(0) scale(0.95) rotate(90deg)',
     transformOrigin: '50% 50%',
     opacity: 1
   },
@@ -195,29 +193,29 @@ const AppearIn = {
 
 const AppearOut = {
   'from': {
-    opacity: 0,
+    opacity: 1,
   },
 
   'to': {
-    opacity: 1,
+    opacity: 0,
   }
 };
 
 const Animations = {
-  ...EnterFromLeft,
-  ...EnterFromRight,
-  ...ExitFromLeft,
-  ...ExitFromRight,
-  ...EnterClockwise,
-  ...EnterCounterClockwise,
-  ...ExitClockwise,
-  ...ExitCounterClockwise,
-  ...Shake,
-  ...AppearIn,
-  ...AppearOut,
-  ...Eases,
-  ...Timing,
-  ...DefaultFillMode
+  EnterFromLeft,
+  EnterFromRight,
+  ExitFromLeft,
+  ExitFromRight,
+  EnterClockwise,
+  EnterCounterClockwise,
+  ExitClockwise,
+  ExitCounterClockwise,
+  Shake,
+  AppearIn,
+  AppearOut,
+  Eases,
+  Timing,
+  DefaultFillMode
 }
 
 export default Animations
