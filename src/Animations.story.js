@@ -11,63 +11,68 @@ type AnimationPropsT = {
 }
 
 class Animation extends React.Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
-      hasEntered: false
+      hasEntered: false,
+      animationName: props.namein,
+      animationState: 'paused'
     }
   }
 
-  handleClick() {
-    this.setState({hasEntered: !this.state.hasEntered});
+  handleClick = () => {
+    let { hasEntered } = this.state
+    let { namein, nameout } = this.props
+    let newState = {hasEntered: !hasEntered, 
+                    animationState: 'playing'};
+    newState.animationName = newState.hasEntered ? namein : nameout;
+    this.setState(newState); 
+  }
+
+  handlePause = () => {
+    this.refs.animationBlock.offsetWidth = 0;
   }
 
   render() {
-    const {
-      label,
-      theme,
-    } = this.props
+    const { hasEntered, animationState, animationName } = this.state
+    const { easein, easeout, namein, nameout, label, isPaused } = this.props
     return (
-      <div
-        {...theme.animation}
-      >
-        <div
-          {...theme.animationDemo}
-        />
-        <button
-          {...theme.button}
-          onClick={this.handleClick}
-        >
-          {label}
-        </button>
-      </div>
+      <ThemedAnimationPresentation 
+        name={animationName}
+        ease={hasEntered ? easein : easeout}
+        ref="animationBlock"
+        isPaused={animationState}
+        onAnimationEnd={this.handlePause}
+        label={label}
+        onClick={this.handleClick}/>
     );
   }
 }
 
-// const Animation = ({
-//   animationStyle,
-//   label,
-// }: AnimationPropsT) => (
-//   <div>
-//     <div
-//       style={{
-//         ...animationStyle,
-//         height: 64,
-//         width: 64,
-//         margin: '25px 25px 0 0',
-//         backgroundColor: 'grey'
-//       }}
-//     />
-//     <div
-//       style={{
-//         ...Fonts.base,
-//       }}
-//     >
-//       {label}
-//     </div>
-//   </div>
-// )
+const AnimationPresentation = ({
+  theme, 
+  label, 
+  onClick,
+  onAnimationEnd
+} = {}) => {
+  return (
+    <div
+      {...theme.animation}
+    >
+      <div
+        {...theme.animationDemo}
+        onAnimationEnd={onAnimationEnd}
+      />
+      <button
+        {...theme.button}
+        onClick={onClick}
+      >
+        {label}
+      </button>
+    </div>
+  )
+}
+
 
 storiesOf('Animations', module)
   .add('Standard', () => (
@@ -76,27 +81,74 @@ storiesOf('Animations', module)
         display: 'flex'
       }}
     >
-      <ThemedAnimation
-        label='enter'
+      <Animation
+        label='Enter/Exit FromLeft'
+        easein={Animations.Eases.entrance}
+        easeout={Animations.Eases.exit}
+        namein={Animations.EnterFromLeft}
+        nameout={Animations.ExitFromLeft}
+      />
+      <Animation
+        label='Enter/Exit FromRight'
+        easein={Animations.Eases.entrance}
+        easeout={Animations.Eases.exit}
+        namein={Animations.EnterFromRight}
+        nameout={Animations.ExitFromRight}
+      />
+      <Animation
+        label='Enter/Exit Clockwise'
+        easein={Animations.Eases.entrance}
+        easeout={Animations.Eases.exit}
+        namein={Animations.EnterClockwise}
+        nameout={Animations.ExitClockwise}
+      />
+      <Animation
+        label='Enter/Exit CounterClockwise'
+        easein={Animations.Eases.entrance}
+        easeout={Animations.Eases.exit}
+        namein={Animations.EnterCounterClockwise}
+        nameout={Animations.ExitCounterClockwise}
+      />
+      <Animation
+        label='Appear In/Out'
+        easein={Animations.Eases.entrance}
+        easeout={Animations.Eases.exit}
+        namein={Animations.AppearIn}
+        nameout={Animations.AppearOut}
       />
     </div>
   ))
 
-const defaultTheme = {
-  animation: {
-    display: 'flex',
-    flexDirection: 'column',
-    width: 66,
-  },
-  animationDemo: {
-    height: 64,
-    width: 64,
-    margin: '25px 25px 0 0',
-    backgroundColor: 'grey',
-  },
-  button: {
-    marginTop: 10,
-  },
+
+const defaultTheme = ({
+  name, ease, isPaused
+}) => {
+  return {
+    animation: {
+      display: 'flex',
+      flexDirection: 'column',
+      width: 100,
+      margin: 20
+    },
+    animationDemo: {
+      animationName: name,
+      animationDuration: '1s',
+      animationFillMode: 'both',
+      animationTimingFunction: ease,
+      animationPlayState: isPaused,
+      height: 100,
+      width: 100,
+      backfaceVisibility: 'hidden',
+      WebkitBackfaceVisibility: 'hidden',
+      perspective: '1000px',
+      margin: '25px 25px 0 0',
+      backgroundColor: 'rgb(7, 179, 179)',
+    },
+    button: {
+      marginTop: 10,
+    },
+  }
+  
 }
 
-const ThemedAnimation = Theme('Animation', defaultTheme)(Animation)
+const ThemedAnimationPresentation = Theme('AnimationPresentation', defaultTheme)(AnimationPresentation)
