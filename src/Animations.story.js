@@ -21,9 +21,11 @@ class Animation extends React.Component {
   }
 
   handleClick = () => {
-    let newState = {hasEntered: !this.state.hasEntered, 
+    let { hasEntered } = this.state
+    let { namein, nameout } = this.props
+    let newState = {hasEntered: !hasEntered, 
                     animationState: 'playing'};
-    newState.animationName = newState.hasEntered ? this.props.namein : this.props.nameout;
+    newState.animationName = newState.hasEntered ? namein : nameout;
     this.setState(newState); 
   }
 
@@ -34,18 +36,15 @@ class Animation extends React.Component {
   render() {
     const { hasEntered, animationState, animationName } = this.state
     const { easein, easeout, namein, nameout, label, isPaused } = this.props
-    console.log(animationName)
     return (
-      <div>
-        <ThemedAnimationPresentation 
-          name={animationName}
-          ease={hasEntered ? easein : easeout}
-          ref="animationBlock"
-          isPaused={animationState}
-          onAnimationEnd={this.handlePause}
-          label={label}
-          onClick={this.handleClick}/>
-      </div>
+      <ThemedAnimationPresentation 
+        name={animationName}
+        ease={hasEntered ? easein : easeout}
+        ref="animationBlock"
+        isPaused={animationState}
+        onAnimationEnd={this.handlePause}
+        label={label}
+        onClick={this.handleClick}/>
     );
   }
 }
