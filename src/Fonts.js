@@ -13,12 +13,11 @@ const common = {
 }
 
 const Fonts = {
-  content: {
-    ...common,
+  content: Object.assign({}, common, {
     fontFamily: '"Open Sans"',
     fontSize: 15,
     lineHeight: '20px',
-  },
+  }),
   code: {
     fontFamily: 'monospace',
     fontSize: 15,
@@ -31,33 +30,27 @@ const Fonts = {
     lineHeight: '20px',
     letterSpacing: '.025em',
   },
-  tiny: {
-    ...common,
+  tiny: Object.assign({}, common, {
     fontSize: 12,
     fontWeight: 400,
     lineHeight: '18px',
-  },
-  small: {
-    ...common,
+  }),
+  small: Object.assign({}, common, {
     fontSize: 15,
     lineHeight: '20px',
-  },
-  base: {
-    ...common,
+  }),
+  base: Object.assign({}, common, {
     fontSize: 18,
     lineHeight: '25px',
-  },
-  large: {
-    ...common,
+  }),
+  large: Object.assign({}, common, {
     fontSize: 30,
     lineHeight: '40px',
-
-  },
-  huge: {
-    ...common,
+  }),
+  huge: Object.assign({}, common, {
     fontSize: 35,
     lineHeight: '50px',
-  },
+  }),
   heading1: heading,
   heading2: heading,
   heading3: heading,
