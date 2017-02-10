@@ -42,12 +42,26 @@ storiesOf('Fonts', module)
           This is the style used for regular content.<br/>
           Two lines are used here to demonstrate the line height.
         </div>
-        <p style={Fonts.base}>
-          <strong>Code / Monospace</strong>
+        <p style={Fonts.content}>
+          <strong>Code</strong>
+        </p>
+        <div>
+          <code style={Fonts.code}>
+            &lt;SomeComponent<br/>
+            &nbsp;&nbsp;someProp='somevalue'<br/>
+            &nbsp;&nbsp;otherProp='othervalue'<br/>
+            /&gt;<br/>
+            <br/>
+            const foo = 'bar'<br/>
+            const bar = 'baz'<br/>
+          </code>
+        </div>
+        <p style={Fonts.content}>
+          <strong>Monospace</strong>
         </p>
         <div>
           <code style={Fonts.monospace}>
-            This is the style used for code or monospace content.<br/>
+            This is the style used for monospace content.<br/>
             Two lines are used here to demonstrate the line height.
           </code>
         </div>

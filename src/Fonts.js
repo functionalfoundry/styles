@@ -19,10 +19,17 @@ const Fonts = {
     fontSize: 15,
     lineHeight: '20px',
   },
-  monospace: {
+  code: {
     fontFamily: 'monospace',
     fontSize: 15,
     lineHeight: '20px',
+    letterSpacing: '.025em',
+  },
+  monospace: {
+    fontFamily: '"Roboto Mono", monospace',
+    fontSize: 15,
+    lineHeight: '20px',
+    letterSpacing: '.025em',
   },
   tiny: {
     ...common,
