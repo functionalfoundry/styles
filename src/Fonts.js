@@ -21,8 +21,8 @@ const Fonts = {
   },
   code: {
     fontFamily: 'Courier, monospace',
-    fontSize: 15,
-    lineHeight: '20px',
+    fontSize: 16,
+    lineHeight: '22px',
     letterSpacing: '.025em',
   },
   monospace: {
