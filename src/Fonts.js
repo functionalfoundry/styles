@@ -27,7 +27,7 @@ const Fonts = {
   },
   monospace: {
     fontFamily: '"Roboto Mono", monospace',
-    fontSize: 15,
+    fontSize: 14,
     lineHeight: '20px',
     letterSpacing: '.025em',
   },
