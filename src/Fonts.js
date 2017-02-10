@@ -20,7 +20,7 @@ const Fonts = {
     lineHeight: '20px',
   },
   code: {
-    fontFamily: 'monospace',
+    fontFamily: 'Courier, monospace',
     fontSize: 15,
     lineHeight: '20px',
     letterSpacing: '.025em',
