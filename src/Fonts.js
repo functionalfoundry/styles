@@ -19,6 +19,11 @@ const Fonts = {
     fontSize: 15,
     lineHeight: '20px',
   },
+  monospace: {
+    fontFamily: 'monospace',
+    fontSize: 15,
+    lineHeight: '20px',
+  },
   tiny: {
     ...common,
     fontSize: 12,
