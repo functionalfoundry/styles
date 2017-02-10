@@ -22,7 +22,7 @@ const Fonts = {
   code: {
     fontFamily: 'Courier, monospace',
     fontSize: 16,
-    lineHeight: '22px',
+    lineHeight: '24px',
     letterSpacing: '.025em',
   },
   monospace: {
