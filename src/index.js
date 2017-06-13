@@ -1,5 +1,6 @@
 /* @flow */
 module.exports.Borders = require('./Borders').default
+module.exports.BreakPoints = require('./BreakPoints').default
 module.exports.Colors = require('./Colors').default
 module.exports.Corners = require('./Corners').default
 module.exports.Fonts = require('./Fonts').default
